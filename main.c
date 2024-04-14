@@ -84,29 +84,26 @@ int	lstsize(t_stack *stack)
 	return (count);
 }
 
-int is_sorted(t_stack *list)
+int	is_sorted(t_stack *list)
 {
-    t_node *current;
-    t_node *prev;
+	t_node	*current;
+	t_node	*prev;
 
-    if (list == NULL || list->head == NULL || list->head->next == NULL)
-    {
-        return 1;
-    }
-
-    current = list->head;
-    prev = current;
-    current = current->next;
-
-    while (current != list->head)
-    {
-        if (prev->data > current->data)
-        {
-            return 0;
-        }
-        prev = current;
-        current = current->next;
-    }
-
-    return 1;
+	if (list == NULL || list->head == NULL || list->head->next == NULL)
+	{
+		return (1);
+	}
+	current = list->head;
+	prev = current;
+	current = current->next;
+	while (current != list->head)
+	{
+		if (prev->data > current->data)
+		{
+			return (0);
+		}
+		prev = current;
+		current = current->next;
+	}
+	return (1);
 }
