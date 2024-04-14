@@ -6,7 +6,7 @@
 /*   By: yshalash <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/14 12:32:13 by yshalash      #+#    #+#                 */
-/*   Updated: 2024/04/14 15:50:10 by yshalash      ########   odam.nl         */
+/*   Updated: 2024/04/14 16:06:41 by yshalash      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	a = array_to_stack_desc(numbers_array, size);
 	b = (t_stack *)malloc(sizeof(t_stack));
 	b->head = NULL;
-	sort_stack(&a, &b);
+	sort_stack_asc(&a, &b);
 	free(numbers_array);
 	free_stack(a);
 	free(b);
