@@ -23,41 +23,39 @@ void	sort_stack_asc(t_stack **a, t_stack **b)
 	int	min;
 	int	size;
 	int	min_index;
-    int i;
+	int	i;
 
 	while (!is_empty(*a) && !is_sorted(*a))
 	{
 		min = (*a)->head->data;
 		size = lstsize(*a);
 		min_index = 0;
-        i = 0;
-
-        while(i < size && !is_sorted(*a))
-        {
+		i = 0;
+		while (i < size && !is_sorted(*a))
+		{
 			if ((*a)->head->data < min)
 			{
 				min = (*a)->head->data;
 				min_index = i;
 			}
 			ra(*a);
-            i++;
-        }
-        i = 0;
-
+			i++;
+		}
+		i = 0;
 		if (min_index <= size / 2)
 		{
-            while(i < min_index && !is_sorted(*a))
-            {
-                ra(*a);
-                i++;
-            }
+			while (i < min_index && !is_sorted(*a))
+			{
+				ra(*a);
+				i++;
+			}
 		}
 		else
 		{
-			while(i < size - min_index && !is_sorted(*a))
+			while (i < size - min_index && !is_sorted(*a))
 			{
 				rra(*a);
-                i++;
+				i++;
 			}
 		}
 		pb(a, b);
@@ -73,29 +71,28 @@ int	is_empty(t_stack *stack)
 	return (stack == NULL || stack->head == NULL);
 }
 
-int lstsize(t_stack *stack)
+int	lstsize(t_stack *stack)
 {
-    int count = 0;
-    t_node *current;
+	int		count;
+	t_node	*current;
 
-    if (is_empty(stack))
-    {
-        return 0;
-    }
-
-    current = stack->head;
-    while (1)
-    {
-        count++;
-        current = current->next;
-        if (current == stack->head)
-        {
-            break;
-        }
-    }
-    return count;
+	count = 0;
+	if (is_empty(stack))
+	{
+		return (0);
+	}
+	current = stack->head;
+	while (1)
+	{
+		count++;
+		current = current->next;
+		if (current == stack->head)
+		{
+			break ;
+		}
+	}
+	return (count);
 }
-
 
 int	is_sorted(t_stack *list)
 {
