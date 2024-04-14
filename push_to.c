@@ -17,13 +17,13 @@ void	push_to(t_stack **dest, t_stack **src)
 		node->next->prev = node->prev;
 		node->prev->next = node->next;
 	}
-    node->next = NULL;
-    node->prev = NULL;
+	node->next = NULL;
+	node->prev = NULL;
 	if (!(*dest) || !(*dest)->head)
 	{
 		(*dest)->head = node;
 		node->next = node;
-        node->prev = node;
+		node->prev = node;
 	}
 	else
 	{
