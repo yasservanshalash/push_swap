@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yshalash <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 12:32:22 by yshalash          #+#    #+#             */
-/*   Updated: 2024/04/14 12:32:23 by yshalash         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   push_swap.h                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yshalash <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/04/14 12:32:22 by yshalash      #+#    #+#                 */
+/*   Updated: 2024/04/14 15:50:01 by yshalash      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ t_stack				*array_to_stack_asc(long arr[], int size);
 t_stack				*array_to_stack_desc(long arr[], int size);
 int					is_empty(t_stack *stack);
 int					lstsize(t_stack *stack);
+int					find_max_bits(t_stack *stack);
 void				sort_stack_asc(t_stack **a, t_stack **b);
+void				sort_stack_desc(t_stack **a, t_stack **b);
+void				sort_stack(t_stack** a, t_stack** b);
 int					is_sorted(t_stack *list);
+int 				is_sorted_desc(t_stack *stack);
 int					duplicate_numbers(long *numbers, int size);
 void				display_row(t_stack *stack);
 void				display_col(t_stack *stack);

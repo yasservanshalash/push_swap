@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   array_to_stack.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yshalash <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 12:31:28 by yshalash          #+#    #+#             */
-/*   Updated: 2024/04/14 12:31:30 by yshalash         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   array_to_stack.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yshalash <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/04/14 12:31:28 by yshalash      #+#    #+#                 */
+/*   Updated: 2024/04/14 14:50:48 by yshalash      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,24 @@ t_stack	*array_to_stack_desc(long arr[], int size)
 	{
 		push(stack, arr[i]);
 		i--;
+	}
+	return (stack);
+}
+
+t_stack	*array_to_stack_asc(long arr[], int size)
+{
+	t_stack	*stack;
+	int		i;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
+	stack->head = NULL;
+	i = 0;
+	while (i < size)
+	{
+		push(stack, arr[i]);
+		i++;
 	}
 	return (stack);
 }
