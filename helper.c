@@ -6,7 +6,7 @@
 /*   By: yshalash <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/14 13:22:20 by yshalash      #+#    #+#                 */
-/*   Updated: 2024/04/14 15:42:57 by yshalash      ########   odam.nl         */
+/*   Updated: 2024/04/14 16:22:10 by yshalash      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,26 @@ int	is_sorted(t_stack *list)
 	return (1);
 }
 
-int	is_sorted_desc(t_stack *stack)
-{
-	t_node	*current;
+int is_sorted_desc(t_stack *stack) {
+    if (stack->head == NULL || stack->head->next == NULL) {
+        return 1; // Empty or single-element stack is considered sorted
+    }
+    t_node *current = stack->head;
+    t_node *start = stack->head; // Store the starting node
 
-	if (stack->head == NULL || stack->head->next == NULL)
-	{
-		return (1); // Empty or single-element stack is considered sorted
-	}
-	current = stack->head;
-	while (current->next != NULL)
-	{
-		if (current->data < current->next->data)
-		{
-			return (0); // If current element is less than next element,
-				stack is not sorted
-		}
-		current = current->next;
-	}
-	return (1); // If loop completes without returning,
-		stack is sorted in descending order
+    while (1) {
+        if (current->data < current->next->data) {
+            return 0; // If current element is less than next element, stack is not sorted
+        }
+        current = current->next;
+        if (current == start) {
+            break; // Break the loop when we reach the starting node again
+        }
+    }
+
+    return 1; // If loop completes without returning, stack is sorted in descending order
 }
+
 
 int	find_max_bits(t_stack *stack)
 {
