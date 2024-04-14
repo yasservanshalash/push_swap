@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void    sort_logic(int min, int min_index, t_stack *a, t_stack *b)
+void	sort_logic(int min, int min_index, t_stack *a, t_stack *b)
 {
-    int i;
+	int	i;
 
 	while (!is_empty(a) && !is_sorted(a))
 	{
@@ -38,15 +38,17 @@ void    sort_logic(int min, int min_index, t_stack *a, t_stack *b)
 			while (i++ < lstsize(a) - min_index && !is_sorted(a))
 				rra(a);
 		pb(&a, &b);
-	}    
+	}
 }
 
 void	sort_stack_asc(t_stack **a, t_stack **b)
 {
-	int	min = 0;
-	int	min_index = 0;
+	int	min;
+	int	min_index;
 
-    sort_logic(min, min_index, *a, *b);
+	min = 0;
+	min_index = 0;
+	sort_logic(min, min_index, *a, *b);
 	while (!is_empty(*b))
 		pa(a, b);
 }

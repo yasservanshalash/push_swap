@@ -12,43 +12,53 @@
 
 #include "push_swap.h"
 
-void remove_from_source(t_stack **src) {
-    t_node *node = (*src)->head;
-    if (!node)
-        return; // No node to remove
-    if (node->next == node)
-        (*src)->head = NULL; // Only one node in the source stack
-    else {
-        (*src)->head = node->next;
-        node->next->prev = node->prev;
-        node->prev->next = node->next;
-    }
-    node->next = NULL;
-    node->prev = NULL;
+void	remove_from_source(t_stack **src)
+{
+	t_node	*node;
+
+	node = (*src)->head;
+	if (!node)
+		return ;
+	if (node->next == node)
+		(*src)->head = NULL;
+	else
+	{
+		(*src)->head = node->next;
+		node->next->prev = node->prev;
+		node->prev->next = node->next;
+	}
+	node->next = NULL;
+	node->prev = NULL;
 }
 
-void add_to_top_of_dest(t_stack **dest, t_node *node) {
-    if (!(*dest) || !(*dest)->head) {
-        (*dest)->head = node;
-        node->next = node;
-        node->prev = node;
-    } else {
-        node->next = (*dest)->head;
-        node->prev = (*dest)->head->prev;
-        (*dest)->head->prev->next = node;
-        (*dest)->head->prev = node;
-        (*dest)->head = node;
-    }
+void	add_to_top_of_dest(t_stack **dest, t_node *node)
+{
+	if (!(*dest) || !(*dest)->head)
+	{
+		(*dest)->head = node;
+		node->next = node;
+		node->prev = node;
+	}
+	else
+	{
+		node->next = (*dest)->head;
+		node->prev = (*dest)->head->prev;
+		(*dest)->head->prev->next = node;
+		(*dest)->head->prev = node;
+		(*dest)->head = node;
+	}
 }
 
-void push_to(t_stack **dest, t_stack **src) {
-    if (!src || !(*src)->head)
-        return;
-    t_node *node = (*src)->head;
-    remove_from_source(src);
-    add_to_top_of_dest(dest, node);
-}
+void	push_to(t_stack **dest, t_stack **src)
+{
+	t_node	*node;
 
+	if (!src || !(*src)->head)
+		return ;
+	node = (*src)->head;
+	remove_from_source(src);
+	add_to_top_of_dest(dest, node);
+}
 
 void	pa(t_stack **a, t_stack **b)
 {
