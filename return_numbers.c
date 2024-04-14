@@ -1,5 +1,5 @@
 #include "push_swap.h"
-  
+
 int	count_strings(char **array_of_strings)
 {
 	int	count;

@@ -30,46 +30,43 @@ t_node	*create_node(long data)
 	return (node);
 }
 
-void push(t_stack *stack, long data) {
-    t_node *new_node = create_node(data);
-    if (new_node == NULL) {
-        return;
-    }
+void	push(t_stack *stack, long data)
+{
+	t_node	*new_node;
 
-    if (stack->head == NULL) {
-        
-        stack->head = new_node;
-        new_node->next = new_node;
-        new_node->prev = new_node;
-    } else {
-        
-        
-        new_node->prev = stack->head->prev; 
-        new_node->next = stack->head;       
-        
-        stack->head->prev->next = new_node; 
-        stack->head->prev = new_node;       
-        stack->head = new_node;             
-    }
+	new_node = create_node(data);
+	if (new_node == NULL)
+	{
+		return ;
+	}
+	if (stack->head == NULL)
+	{
+		stack->head = new_node;
+		new_node->next = new_node;
+		new_node->prev = new_node;
+	}
+	else
+	{
+		new_node->prev = stack->head->prev;
+		new_node->next = stack->head;
+		stack->head->prev->next = new_node;
+		stack->head->prev = new_node;
+		stack->head = new_node;
+	}
 }
 
 t_stack	*array_to_stack_desc(long arr[], int size)
 {
-    t_stack	*stack;
-    int		i;
+	t_stack	*stack;
+	int		i;
 
-    
-    stack = (t_stack *)malloc(sizeof(t_stack));
-    if (stack == NULL)
-        return (NULL);  
-
-    stack->head = NULL;
-    
-    
-    for (i = size - 1; i >= 0; i--)
-    {
-        push(stack, arr[i]);  
-    }
-    
-    return stack;
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
+	stack->head = NULL;
+	for (i = size - 1; i >= 0; i--)
+	{
+		push(stack, arr[i]);
+	}
+	return (stack);
 }
