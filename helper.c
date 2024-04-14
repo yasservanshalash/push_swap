@@ -64,34 +64,51 @@ int	is_sorted(t_stack *list)
 	return (1);
 }
 
-int is_sorted_desc(t_stack *stack) {
-    if (stack->head == NULL || stack->head->next == NULL) {
-        return 1; // Empty or single-element stack is considered sorted
-    }
-    t_node *current = stack->head;
-    while (current->next != NULL) {
-        if (current->data < current->next->data) {
-            return 0; // If current element is less than next element, stack is not sorted
-        }
-        current = current->next;
-    }
-    return 1; // If loop completes without returning, stack is sorted in descending order
+int	is_sorted_desc(t_stack *stack)
+{
+	t_node	*current;
+
+	if (stack->head == NULL || stack->head->next == NULL)
+	{
+		return (1); // Empty or single-element stack is considered sorted
+	}
+	current = stack->head;
+	while (current->next != NULL)
+	{
+		if (current->data < current->next->data)
+		{
+			return (0); // If current element is less than next element,
+				stack is not sorted
+		}
+		current = current->next;
+	}
+	return (1); // If loop completes without returning,
+		stack is sorted in descending order
 }
 
-int find_max_bits(t_stack *stack) {
-    int max_bits = 0;
-    t_node *current = stack->head;
-    long max_value = 0;
-    // Find the max value in the stack
-    while (current != NULL) {
-        if (current->data > max_value) max_value = current->data;
-        current = current->next;
-        if (current == stack->head) break; // Assuming circular linked list
-    }
-    // Calculate max bits needed for the max value
-    while (max_value) {
-        max_value >>= 1;
-        max_bits++;
-    }
-    return max_bits;
+int	find_max_bits(t_stack *stack)
+{
+	int		max_bits;
+	t_node	*current;
+	long	max_value;
+
+	max_bits = 0;
+	current = stack->head;
+	max_value = 0;
+	// Find the max value in the stack
+	while (current != NULL)
+	{
+		if (current->data > max_value)
+			max_value = current->data;
+		current = current->next;
+		if (current == stack->head)
+			break ; // Assuming circular linked list
+	}
+	// Calculate max bits needed for the max value
+	while (max_value)
+	{
+		max_value >>= 1;
+		max_bits++;
+	}
+	return (max_bits);
 }
