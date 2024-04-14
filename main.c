@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yshalash <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/04/14 12:32:13 by yshalash      #+#    #+#                 */
+/*   Updated: 2024/04/14 12:34:05 by yshalash      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	main(int argc, char **argv)
@@ -43,27 +55,15 @@ void	sort_stack_asc(t_stack **a, t_stack **b)
 		}
 		i = 0;
 		if (min_index <= size / 2)
-		{
-			while (i < min_index && !is_sorted(*a))
-			{
+			while (i++ < min_index && !is_sorted(*a))
 				ra(*a);
-				i++;
-			}
-		}
 		else
-		{
-			while (i < size - min_index && !is_sorted(*a))
-			{
+			while (i++ < size - min_index && !is_sorted(*a))
 				rra(*a);
-				i++;
-			}
-		}
 		pb(a, b);
 	}
 	while (!is_empty(*b))
-	{
 		pa(a, b);
-	}
 }
 
 int	is_empty(t_stack *stack)
