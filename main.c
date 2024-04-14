@@ -11,56 +11,56 @@ int	main(int argc, char **argv)
 	a = array_to_stack_desc(numbers_array, size);
 	b = (t_stack *)malloc(sizeof(t_stack));
 	b->head = NULL;
-	sortStackAsc(&a, &b);
+	sort_stack_asc(&a, &b);
 	free(numbers_array);
 	free_stack(a);
 	free(b);
 	return (0);
 }
 
-void	sortStackAsc(t_stack **a, t_stack **b)
+void	sort_stack_asc(t_stack **a, t_stack **b)
 {
 	int	min;
 	int	size;
-	int	minIndex;
+	int	min_index;
 
-	while (!isEmpty(*a) && !is_sorted(*a))
+	while (!is_empty(*a) && !is_sorted(*a))
 	{
 		min = (*a)->head->data;
 		size = lstsize(*a);
-		minIndex = 0;
+		min_index = 0;
 		for (int i = 0; i < size && !is_sorted(*a); i++)
 		{
 			if ((*a)->head->data < min)
 			{
 				min = (*a)->head->data;
-				minIndex = i;
+				min_index = i;
 			}
 			ra(*a);
 		}
-		if (minIndex <= size / 2)
+		if (min_index <= size / 2)
 		{
-			for (int i = 0; i < minIndex && !is_sorted(*a); i++)
+			for (int i = 0; i < min_index && !is_sorted(*a); i++)
 			{
 				ra(*a);
 			}
 		}
 		else
 		{
-			for (int i = 0; i < size - minIndex && !is_sorted(*a); i++)
+			for (int i = 0; i < size - min_index && !is_sorted(*a); i++)
 			{
 				rra(*a);
 			}
 		}
 		pb(a, b);
 	}
-	while (!isEmpty(*b))
+	while (!is_empty(*b))
 	{
 		pa(a, b);
 	}
 }
 
-int	isEmpty(t_stack *stack)
+int	is_empty(t_stack *stack)
 {
 	return (stack == NULL || stack->head == NULL);
 }
@@ -70,7 +70,7 @@ int	lstsize(t_stack *stack)
 	int		count;
 	t_node	*current;
 
-	if (isEmpty(stack))
+	if (is_empty(stack))
 	{
 		return (0);
 	}
@@ -84,26 +84,29 @@ int	lstsize(t_stack *stack)
 	return (count);
 }
 
-int	is_sorted(t_stack *list)
+int is_sorted(t_stack *list)
 {
-	t_node	*current;
-	t_node	*prev;
+    t_node *current;
+    t_node *prev;
 
-	if (list == NULL || list->head == NULL || list->head->next == NULL)
-	{
-		return (1);
-	}
-	current = list->head;
-	prev = current;
-	current = current->next;
-	do
-	{
-		if (prev->data > current->data)
-		{
-			return (0);
-		}
-		prev = current;
-		current = current->next;
-	} while (current != list->head);
-	return (1);
+    if (list == NULL || list->head == NULL || list->head->next == NULL)
+    {
+        return 1;
+    }
+
+    current = list->head;
+    prev = current;
+    current = current->next;
+
+    while (current != list->head)
+    {
+        if (prev->data > current->data)
+        {
+            return 0;
+        }
+        prev = current;
+        current = current->next;
+    }
+
+    return 1;
 }
