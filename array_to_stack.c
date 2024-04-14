@@ -64,9 +64,11 @@ t_stack	*array_to_stack_desc(long arr[], int size)
 	if (stack == NULL)
 		return (NULL);
 	stack->head = NULL;
-	for (i = size - 1; i >= 0; i--)
+	i = size - 1;
+	while (i >= 0)
 	{
 		push(stack, arr[i]);
+		i--;
 	}
 	return (stack);
 }
